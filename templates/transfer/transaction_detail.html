@@ -1,0 +1,46 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        .detail{
+            margin-top: 100px;
+            margin-left: 160px;
+            border: solid;
+        }
+        .reciever{
+            border: solid;
+            margin-top: 30px;
+        }
+        p img{
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<div class="detail">
+<h5>{{account.user}}</h3>
+<p>{{account.account_number}}</p>
+<p>{{account.account_id}}</p>
+<p><img src="{{kyc.image.url}}" alt=""></p>
+<div class="reciever">
+<h4>RECIVER DETAILS</h4>
+<p>{{receiver}}</p>
+<p>{{transaction.amount}}</p>
+<p>{{receiver.account.account_number}}</p>
+<p>{{receiver.account.account_id}}</p>
+<h4>KYC DETAILS</h4>
+<p>{{kyc.gender}}</p>
+<p>{{kyc.id}}</p>
+<p>{{kyc.date_of_birth}}</p>
+<h4>TRANSACTION DETAIS</h4>
+<p>{{transaction.transaction_id}}</p>
+<p>{{transaction.description}}</p>
+<p>{{transaction.amount}}</p>
+<p>{{transaction.date}}</p>
+<p>{{transaction.status}}</p>
+<p>{{transaction.transaction_type}}</p>
+</div>
+</div>
+{% endblock content %}

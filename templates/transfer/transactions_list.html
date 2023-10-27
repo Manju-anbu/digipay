@@ -1,0 +1,72 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+ <head>
+  <style>
+   .dash{
+     border: solid;
+     margin-left: 200px;
+     margin-top: 150px;
+     width: 100%;
+   }
+   .user{
+    font-size: 13px;
+   }
+   .btn{
+    display: flex;
+    justify-content: space-between;
+   }
+   input{
+    color: red;
+    border: black solid;
+  
+   }
+
+  </style>
+ </head>
+  <form action="" method="POST">
+    <div class="dash">
+      <div class="container">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-md-5">
+            <div class="card card-body">
+               
+              <p class="user">HI {{account.user}}</p>
+              <p>Rs.{{account.account_balance}}</p>
+              <p>Account Number:{{account.account_number}}</p>
+               <div class="btn">
+                 <input type="submit" value="Transfer">
+                <input type="submit" value="Recieve">
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+  <table border="5" cellpadding="15px">
+    <tr>
+      <th>NAME</th>
+      <th>AMOUNT</th>
+      <th>DATE</th>
+      <th>TRANSACTION STATUS</th>
+      <th>TRANSACTION ID</th>
+    </tr>
+    {%for data in transaction%} 
+    <tr>
+      <td>{{data.user}}</td>
+      <td>{{data.amount}}</td>
+      <td>{{data.date}}</td>
+      <td>{{data.status}}</td>
+      <td><a href="{% url 'transactions:transaction_detail' data.transaction_id %}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+      </svg></a></td>
+    </tr>
+    {%endfor%}
+  </table>
+  
+  </div>
+
+  {% endblock content %}
