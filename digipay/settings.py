@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+w*0c^zo18m)i9+l#9b7ow#d)o7r%6*wacaq6n24*s9pwfj29n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
 
 
 # Application definition
@@ -93,11 +93,14 @@ WSGI_APPLICATION = 'digipay.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'aegBFDDgdGe6eGe--GgAEDACfbD2bfca',
+        'HOST' : 'roundhouse.proxy.rlwy.net',
+        'PORT': 45506,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -138,6 +141,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
 
 
 # media configurations
